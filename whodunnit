@@ -1,0 +1,128 @@
+var name = 'Keith';
+
+var printName = function() {
+  console.log('My name is ' + name );
+};
+
+printName();
+
+global variable name is set to "Keith"
+function print name takes name variable and makes an output
+calls function printName which prints "My name is Keith"
+
+------------------------------------------------------------------------------
+
+score = 5;
+
+var result = function() {
+  var score = 3;
+  return score;
+};
+
+console.log(result());
+
+global variable score is set to 5
+function result changes local variable score to 3 and returns the new value
+prints the output of the function which will be 3
+
+------------------------------------------------------------------------------
+
+var myAnimals = ['Chickens', 'Cats', 'Rabbits'];
+
+var listAnimals = function() {
+  myAnimals = ['Ducks', 'Dogs', 'Lions'];
+  for(var i=0;i<myAnimals.length; i++){
+    console.log(i + ": " + myAnimals[i]);
+  }
+}
+
+listAnimals();
+
+global variable myAnimals set to array of chickens, cats and rabbits
+function list animals changes global variable to ducks, dogs and lions
+for loop goes through the array printing each item in the array
+functions is called and returns "1: Ducks" then "2: Dogs then 3: Lions"
+
+------------------------------------------------------------------------------
+
+var suspectOne = 'Jay';
+var suspectTwo = 'Val';
+var suspectThree = 'Keith';
+var suspectFour = 'Rick';
+
+var allSuspects = function() {
+  var suspectThree = 'Harvey'
+  console.log('Suspects include: ' + suspectOne + ', ' + suspectTwo + ', ' + suspectThree + ', ' + suspectFour)
+};
+
+allSuspects();
+console.log( 'Suspect three is:' + suspectThree );
+
+4 global variables set to Jay , Val , Keith , Rick 
+function changes Keith to Harvey and prints all suspects (suspect3 is Harvey)
+then the console log prints Keith
+
+------------------------------------------------------------------------------
+var detective = {
+  name : 'Ace Ventura',
+  pet : 'monkey'
+};
+
+var printName = function(detective) {
+  return detective.name
+};
+
+var detectiveInfo = function() {
+  detective['name'] = 'Poirot'
+  return printName(detective);
+};
+
+console.log(detectiveInfo());
+
+object detective has keys name and pet and sets their value to Ace Venture and monkey
+function printName isnt called so ignore it
+detectiveInfo changes the detectives name to poirot
+and prints poirot
+
+------------------------------------------------------------------------------
+var murderer = 'rick';
+
+var outerFunction = function() {
+  var murderer = 'marc';
+
+  var innerFunction = function() {
+    murderer = 'valerie';
+  }
+
+  innerFunction();
+}
+
+outerFunction();
+console.log('the murderer is ', murderer);
+
+murderer is set to rick 
+outerFunction sets murderer value to marc locally
+innerFunction sets murderer value to valerie globally
+innerFunction is called which displays valerie as the murderer
+outerFunction is called which displays marc as the murderer
+the console.log prints marc as the murderer because the innerFunction changes the global variable to marc whereas the outerFunction only changes it when its called
+------------------------------------------------------------------------------
+
+var pub = "footlights"
+
+var otherPub = function(){
+  var pub = "blue blazer"
+  return pub
+}
+var otherOtherPub = function(){
+  pub = "chanter"
+  return pub
+}
+
+var otherOtherOtherPub(Pub){
+  this.pub = pub
+  return pub
+}
+
+console.log("we are drinking at:" + pub);
+console.log("we are drinking at:" + otherOtherOtherPub(otherPub));
